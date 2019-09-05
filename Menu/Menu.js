@@ -19,33 +19,32 @@ let menuItems = [
     </ul>
   </div>
 */
-const header = document.querySelector('.header');
-const menuButton = document.querySelector('menu-button');
 
 function CreateMenu(menuItems){
   let menu = document.createElement('div');
   let menuList = document.createElement('ul'); 
 
-  menuItems.forEach(item => {
-    const meanuListItems = document.createElement('li');
-    menuList.appendChild(meanuListItems);
-    menuListItems.textContent = items;
-  });
+  menu.classList.add('menu');
 
   menu.appendChild(menuList);
 
-  menu.classList.add('menu');
+  menuItems.forEach(item => {
+    const menuListItems = document.createElement('li');
+    menuList.appendChild(menuListItems);
+    menuListItems.textContent = item;
+  });
 
+  const menuButton = document.querySelector('.menu-button');
   menuButton.addEventListener('click', e => {
-    menu.classList.toggle('menu--open')
+  menu.classList.toggle('menu--open');
   })
 
   return menu;
 };
 
-menuItems.forEach(item =>{
-  header.appendChild(CreateMenu(menuItems));
-}) 
+const header = document.querySelector('.header');
+
+header.appendChild(CreateMenu(menuItems));
 
 
 /*
